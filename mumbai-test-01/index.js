@@ -44,6 +44,14 @@ app.use('/upload', upload);
 // app.use('/mail', mail);
 // app.use('/jwt', jwt);
 
+app.post('', function (req, res) {
+    res.send(res.json({
+        speech: 'speech',
+        displayText: 'speech',
+        source: "webhook-echo-sample"
+      }));
+});
+
 app.get('**', function (req, res) {
     res.send('{data:Sorry, this is an invalid URL...}');
 });

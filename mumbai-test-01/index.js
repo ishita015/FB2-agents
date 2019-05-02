@@ -45,11 +45,17 @@ app.use('/upload', upload);
 // app.use('/jwt', jwt);
 
 app.post('', function (req, res) {
-    res.send(res.json({
-        speech: 'speech',
-        displayText: 'speech',
-        source: "webhook-echo-sample"
-      }));
+    var speech =
+    req.body.result &&
+    req.body.result.parameters &&
+    req.body.result.parameters.echoText
+    ? req.body.result.parameters.echoText
+    : "Seems like some problem. Speak again.";
+    return res.json({
+    speech: speech,
+    displayText: speech,
+    source: "webhook-echo-sample"
+    });
 });
 
 app.get('**', function (req, res) {

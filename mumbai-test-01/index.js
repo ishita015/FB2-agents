@@ -45,7 +45,7 @@ app.use('/upload', upload);
 // app.use('/jwt', jwt);
 
 app.get('**', function (req, res) {
-    res.send('Sorry, this is an invalid URL...');
+    res.send('{data:Sorry, this is an invalid URL...}');
 });
 
 app.listen(process.env.PORT || 3000); 

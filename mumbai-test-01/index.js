@@ -54,7 +54,21 @@ app.post('', function (req, res) {
     return res.json({
     speech: speech,
     displayText: speech,
-    source: "webhook-echo-sample"
+    source: "webhook-echo-sample",
+    data:{
+        "links": [
+          {
+            "text": "Facebook",
+            "link": "https://www.facebook.com/Rothmanns-Steakhouse-122224305083/",
+            "image": "http://mydiningbot.com/assets/img/cards/facebook.jpg"
+          },
+          {
+            "text": "Instagram",
+            "link": "https://www.instagram.com/ROTHMANNS_STEAKHOUSE/",
+            "image": "http://mydiningbot.com/assets/img/cards/instagram.jpg"
+          }
+        ]
+      }
     });
 });
 

@@ -2,6 +2,32 @@ var express = require('express');
 var router = express.Router();
 const UserData = require('../model/data');
 
+router.post('', function (req, res) {
+    var speech =
+        req.body.result &&
+            req.body.result.parameters &&
+            req.body.result.parameters.echoText
+            ? req.body.result.parameters.echoText
+            : "Seems like some problem. Speak again.";
+    return res.json({
+        speech: speech,
+        displayText: speech,
+        source: "webhook-echo-sample",
+        links: [
+            {
+                "text": "Facebook",
+                "link": "https://www.facebook.com/Rothmanns-Steakhouse-122224305083/",
+                "image": "http://mydiningbot.com/assets/img/cards/facebook.jpg"
+            },
+            {
+                "text": "Instagram",
+                "link": "https://www.instagram.com/ROTHMANNS_STEAKHOUSE/",
+                "image": "http://mydiningbot.com/assets/img/cards/instagram.jpg"
+            }
+        ]
+    });
+});
+
 router.post("/addname", (req, res) => {
     const myData = new UserData({
         text: req.body.text,

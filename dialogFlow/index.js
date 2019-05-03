@@ -44,33 +44,7 @@ app.use('/upload', upload);
 // app.use('/mail', mail);
 // app.use('/jwt', jwt);
 
-app.post('', function (req, res) {
-    var speech =
-    req.body.result &&
-    req.body.result.parameters &&
-    req.body.result.parameters.echoText
-    ? req.body.result.parameters.echoText
-    : "Seems like some problem. Speak again.";
-    return res.json({
-    speech: speech,
-    displayText: speech,
-    source: "webhook-echo-sample",
-    data:{
-        "links": [
-          {
-            "text": "Facebook",
-            "link": "https://www.facebook.com/Rothmanns-Steakhouse-122224305083/",
-            "image": "http://mydiningbot.com/assets/img/cards/facebook.jpg"
-          },
-          {
-            "text": "Instagram",
-            "link": "https://www.instagram.com/ROTHMANNS_STEAKHOUSE/",
-            "image": "http://mydiningbot.com/assets/img/cards/instagram.jpg"
-          }
-        ]
-      }
-    });
-});
+
 
 app.get('**', function (req, res) {
     res.send('{data:Sorry, this is an invalid URL...}');
